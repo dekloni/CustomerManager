@@ -50,6 +50,15 @@ namespace CustomerManager.Repository
             }).AsQueryable();
         }
 
+        public IQueryable<Payment> GetPayments()
+        {
+            var query = _Context.Payments
+                       .Include("Order")
+                       //.Include("State")
+                       .OrderBy(c => c.Date);
+            return query.AsQueryable();
+        }
+
         public OperationStatus CheckUnique(int id, string property, string value)
         {
             switch (property.ToLower())
@@ -86,7 +95,7 @@ namespace CustomerManager.Repository
             return opStatus;
         }
 
-        public OperationStatus UpdateCustomer(Customer customer) 
+        public OperationStatus UpdateCustomer(Customer customer)
         {
             var opStatus = new OperationStatus { Status = true };
             try
@@ -128,5 +137,7 @@ namespace CustomerManager.Repository
             }
             return opStatus;
         }
+
+
     }
 }

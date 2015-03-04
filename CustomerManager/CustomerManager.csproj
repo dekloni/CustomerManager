@@ -205,6 +205,7 @@
     <Compile Include="Model\CustomerSummary.cs" />
     <Compile Include="Model\OperationStatus.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Payment.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -30,6 +30,16 @@ namespace CustomerManager.Controllers
         }
 
         [HttpGet]
+        [Queryable]
+        public HttpResponseMessage Payments()
+        {
+            var g = _Repository.GetPayments().Take(10).ToList();
+            var totalRecords = g.Count();
+            HttpContext.Current.Response.Headers.Add("X-InlineCount", totalRecords.ToString());
+            return Request.CreateResponse(HttpStatusCode.OK, g);
+        }
+
+        [HttpGet]
         public HttpResponseMessage States()
         {
             var states = _Repository.GetStates();
@@ -57,7 +67,7 @@ namespace CustomerManager.Controllers
         public HttpResponseMessage Login([FromBody]UserLogin userLogin)
         {
             //Simulated login
-            return Request.CreateResponse(HttpStatusCode.OK, new { status = true});
+            return Request.CreateResponse(HttpStatusCode.OK, new { status = true });
         }
 
         [HttpPost]

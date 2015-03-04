@@ -24,12 +24,12 @@ namespace CustomerManager.Repository
             {
                 var nameGenderHost = SplitValue(customerNames[i]);
                 var cityState = SplitValue(citiesStates[i]);
-                var cust = new Customer 
+                var cust = new Customer
                 {
                     Id = i + 1,
                     FirstName = nameGenderHost[0],
                     LastName = nameGenderHost[1],
-                    Email= String.Format("{0}.{1}@{2}", nameGenderHost[0], nameGenderHost[1], nameGenderHost[3]),
+                    Email = String.Format("{0}.{1}@{2}", nameGenderHost[0], nameGenderHost[1], nameGenderHost[3]),
                     Address = addresses[i],
                     City = cityState[0],
                     State = sortedStates.Where(state => state.Abbreviation == cityState[1]).SingleOrDefault(),
@@ -55,10 +55,23 @@ namespace CustomerManager.Repository
                     custOrder.Quantity = (quantity == 0) ? 1 : quantity;
                     custOrder.Date = DateTime.Now.AddDays(randomQuantity.Next(30) * multiplier);
                     custOrder.CustomerId = cust.Id;
+                    custOrder.Payment = new List<Payment>();
+                    var pm = new Payment() { Date = DateTime.UtcNow, PaymentType = "card -completed" };
+                    custOrder.Payment.Add(pm);
+                    //if (custOrder.Id==2)
+                    //{
+                    //    custOrder.Payment.Add();
+                    //}
                     context.Orders.Add(custOrder);
                 }
+
+
             }
-             
+
+
+            //// add one test payment
+            //context.Payments.Add(pm);
+
         }
 
         private static string[] SplitValue(string val)
@@ -220,6 +233,6 @@ namespace CustomerManager.Repository
             new Order { Product = "Monitor", Price =  199.99M, Quantity=  2 },
             new Order { Product = "Camera", Price =  499.99M, Quantity=  1 },
             new Order { Product = "Picture Frame", Price =  19.99M, Quantity=  5 }
-        };    
+        };
     }
 }

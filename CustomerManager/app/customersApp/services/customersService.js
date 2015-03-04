@@ -12,6 +12,10 @@ define(['app'], function (app) {
             return getPagedResource('customers', pageIndex, pageSize);
         };
 
+        factory.getPaymentsSummary = function (pageIndex, pageSize) {
+            return getPagedResource('payments', pageIndex, pageSize);
+        };
+
         factory.getCustomersSummary = function (pageIndex, pageSize) {
             return getPagedResource('customersSummary', pageIndex, pageSize);
         };
@@ -91,6 +95,19 @@ define(['app'], function (app) {
                 };
             });
         }
+
+        //function getPagedResource2(baseResource, pageIndex, pageSize) {
+        //    var resource = baseResource;
+        //    resource += (arguments.length == 3) ? buildPagingUri(pageIndex, pageSize) : '';
+        //    return $http.get(serviceBase + resource).then(function (response) {
+        //        var custs = response.data;
+        //        extendCustomers(custs);
+        //        return {
+        //            totalRecords: parseInt(response.headers('X-InlineCount')),
+        //            results: custs
+        //        };
+        //    });
+        //}
 
         function buildPagingUri(pageIndex, pageSize) {
             var uri = '?$top=' + pageSize + '&$skip=' + (pageIndex * pageSize);

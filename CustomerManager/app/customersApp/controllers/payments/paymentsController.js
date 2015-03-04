@@ -11,9 +11,11 @@ define(['app'], function (app) {
         var vm = this;
 
         vm.customers = [];
+        vm.payments = [];
         vm.filteredCustomers = [];
+        vm.filteredPayments = [];
         vm.filteredCount = 0;
-        vm.orderby = 'lastName';
+        vm.orderby = 'OrderId';
         vm.reverse = false;
         vm.searchText = null;
         vm.cardAnimationClass = '.card-animation';
@@ -25,7 +27,7 @@ define(['app'], function (app) {
 
         vm.pageChanged = function (page) {
             vm.currentPage = page;
-            getCustomersSummary();
+            getPaymentsSummary();
         };
 
         vm.deleteCustomer = function (id) {
@@ -94,7 +96,7 @@ define(['app'], function (app) {
 
         function init() {
             //createWatches();
-            getCustomersSummary();
+            getPaymentsSummary();
         }
 
         //function createWatches() {
@@ -108,11 +110,11 @@ define(['app'], function (app) {
         //    });
         //}
 
-        function getCustomersSummary() {
-            dataService.getCustomersSummary(vm.currentPage - 1, vm.pageSize)
+        function getPaymentsSummary() {
+            dataService.getPaymentsSummary(vm.currentPage - 1, vm.pageSize)
             .then(function (data) {
                 vm.totalRecords = data.totalRecords;
-                vm.customers = data.results;
+                vm.payments = data.results;
                 filterCustomers(''); //Trigger initial filter
 
                 $timeout(function () {
@@ -125,8 +127,8 @@ define(['app'], function (app) {
         }
 
         function filterCustomers(filterText) {
-            vm.filteredCustomers = $filter("nameCityStateFilter")(vm.customers, filterText);
-            vm.filteredCount = vm.filteredCustomers.length;
+            vm.filteredPayments = vm.payments;// $filter("nameCityStateFilter")(vm.customers, filterText);
+            vm.filteredCount = vm.filteredPayments.length;
         }
 
         function getCustomerById(id) {
