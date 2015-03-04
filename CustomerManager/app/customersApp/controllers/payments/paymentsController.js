@@ -64,11 +64,15 @@ define(['app'], function (app) {
         };
 
         vm.setOrder = function (orderby) {
-            alert("asdasd");
-            if (orderby === vm.orderby) {
-                vm.reverse = !vm.reverse;
-            }
-            vm.orderby = orderby;
+            alert('asdasd');
+            //if (orderby === vm.orderby) {
+            //    vm.reverse = !vm.reverse;
+            //}
+            //vm.orderby = orderby;
+        };
+
+        vm.alert = function () {
+            alert('alerted!');
         };
 
         vm.DisplayModeEnum = {
@@ -91,12 +95,12 @@ define(['app'], function (app) {
             $location.path(url);
         };
 
-        vm.setOrder = function (orderby) {
-            if (orderby === vm.orderby) {
-                vm.reverse = !vm.reverse;
-            }
-            vm.orderby = orderby;
-        };
+        //vm.setOrder = function (orderby) {
+        //    if (orderby === vm.orderby) {
+        //        vm.reverse = !vm.reverse;
+        //    }
+        //    vm.orderby = orderby;
+        //};
 
         vm.searchTextChanged = function () {
             filterCustomers(vm.searchText);

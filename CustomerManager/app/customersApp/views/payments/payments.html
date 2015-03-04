@@ -26,8 +26,8 @@
                         <thead>
                             <tr>
                                 <th data-ng-click="vm.setOrder('product')">Product</th>
-                                <th>PaymentType</th>
-                                <th>Completition Date</th>
+                                <th data-ng-click="vm.alert()">PaymentType</th>
+                                <th data-ng-click="vm.setOrder()">Completition Date</th>
                             </tr>
                         </thead>
                         <tbody data-ng-repeat="paym in vm.filteredPayments ">
