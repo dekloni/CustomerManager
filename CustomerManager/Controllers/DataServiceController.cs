@@ -33,7 +33,7 @@ namespace CustomerManager.Controllers
         [Queryable]
         public HttpResponseMessage Payments()
         {
-            var g = _Repository.GetPayments().Take(10).ToList();
+            var g = _Repository.GetPayments().ToList();
             var totalRecords = g.Count();
             HttpContext.Current.Response.Headers.Add("X-InlineCount", totalRecords.ToString());
             return Request.CreateResponse(HttpStatusCode.OK, g);

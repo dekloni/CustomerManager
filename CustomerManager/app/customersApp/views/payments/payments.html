@@ -20,34 +20,55 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-12 repeat-animation" data-ng-repeat="paym in vm.filteredPayments ">
-                    <div>
-                        <p>Payment: {{paym.paymentType}} Completed on {{paym.date | date:'MM/dd/yyyy @ h:mma'}} <!--<a href="#/customerorders/{{customer.id}}">{{ customer.firstName + ' ' + customer.lastName }}</a>--></p>
-                    </div>
-                    <!--<div data-ng-include="'/app/customersApp/views/orders/ordersTable.html'" data-ng-controller="OrderChildController as vm" />-->
-                </div>
-            </div>
-            <div class="row show-hide-animation" data-ng-show="vm.filteredPayments.length == 0">
-                <div class="col-md-12">
-                    <h4>No customers found</h4>
-                </div>
-            </div>
-            <div class="row show-hide-animation" data-ng-show="vm.payments.length > 0" style="margin-left:0px;">
-                <div class="col-md-12">
-                    <div data-pagination
-                         data-on-select-page="vm.pageChanged(page)"
-                         data-total-items="vm.totalRecords"
-                         data-page="vm.currentPage"
-                         data-boundary-links="true"
-                         class="pagination-sm">
-                    </div>
-                    <h5>Showing {{ vm.filteredCount }} of {{ vm.totalRecords}} total records</h5>
+                <div class="col-md-12 repeat-animation">
+
+                    <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+                        <thead>
+                            <tr>
+                                <th data-ng-click="vm.setOrder('product')">Product</th>
+                                <th>PaymentType</th>
+                                <th>Completition Date</th>
+                            </tr>
+                        </thead>
+                        <tbody data-ng-repeat="paym in vm.filteredPayments ">
+                            <tr>
+                                <td>
+                                    {{paym.order.id}}
+                                </td>
+                                <td>
+                                    {{paym.paymentType}}
+                                </td>
+                                <td>
+                                    {{paym.date | date:'MM/dd/yyyy @ h:mma'}} <!--<a href="#/customerorders/{{customer.id}}">{{ customer.firstName + ' ' + customer.lastName }}</a>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
-
-        <h5>Showing {{ vm.filteredCount }} of {{ vm.totalRecords}} total customer.s</h5>
-
+        <div class="row show-hide-animation" data-ng-show="vm.filteredPayments.length == 0">
+            <div class="col-md-12">
+                <h4>No customers found</h4>
+            </div>
+        </div>
+        <div class="row show-hide-animation" data-ng-show="vm.payments.length > 0" style="margin-left:0px;">
+            <div class="col-md-12">
+                <div data-pagination
+                     data-on-select-page="vm.pageChanged(page)"
+                     data-total-items="vm.totalRecords"
+                     data-page="vm.currentPage"
+                     data-boundary-links="true"
+                     class="pagination-sm">
+                </div>
+                <h5>Showing {{ vm.filteredCount }} of {{ vm.totalRecords}} total records</h5>
+            </div>
+        </div>
     </div>
+
+    <h5>Showing {{ vm.filteredCount }} of {{ vm.totalRecords}} total customer.s</h5>
+
+</div>
 </div>
 

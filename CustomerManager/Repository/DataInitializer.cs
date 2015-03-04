@@ -56,8 +56,16 @@ namespace CustomerManager.Repository
                     custOrder.Date = DateTime.Now.AddDays(randomQuantity.Next(30) * multiplier);
                     custOrder.CustomerId = cust.Id;
                     custOrder.Payment = new List<Payment>();
-                    var pm = new Payment() { Date = DateTime.UtcNow, PaymentType = "card -completed" };
-                    custOrder.Payment.Add(pm);
+
+                    // generate order payments
+                    var randomNumberOfPayments = randomQuantity.Next(2);
+                    var paymentTypeIndex = randomQuantity.Next(paymentType.Length);
+                    for (int l = 0; l < randomNumberOfPayments; l++)
+                    {
+                        var pm = new Payment() { Date = DateTime.Now.AddDays(randomQuantity.Next(30) * multiplier), PaymentType = paymentType[paymentTypeIndex] };
+                        custOrder.Payment.Add(pm);
+                    }
+
                     //if (custOrder.Id==2)
                     //{
                     //    custOrder.Payment.Add();
@@ -233,6 +241,15 @@ namespace CustomerManager.Repository
             new Order { Product = "Monitor", Price =  199.99M, Quantity=  2 },
             new Order { Product = "Camera", Price =  499.99M, Quantity=  1 },
             new Order { Product = "Picture Frame", Price =  19.99M, Quantity=  5 }
+        };
+
+        static string[] paymentType = 
+        { 
+            "PayPal", 
+            "Visa Credit Card", 
+            "MasterCard", 
+            "Cash", 
+            "Cheque", 
         };
     }
 }

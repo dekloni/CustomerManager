@@ -156,6 +156,7 @@
     <Content Include="app\customersApp\services\customersService.js" />
     <Content Include="app\customersApp\services\dataService.js" />
     <Content Include="app\customersApp\views\payments\payments.html" />
+    <Content Include="app\customersApp\views\payments\paymentTable.html" />
     <Content Include="app\wc.directives\directives\menuHighlighter.js" />
     <Content Include="app\wc.directives\directives\wcOverlay.js" />
     <Content Include="Content\animations.css" />

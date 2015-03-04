@@ -63,6 +63,14 @@ define(['app'], function (app) {
             });
         };
 
+        vm.setOrder = function (orderby) {
+            alert("asdasd");
+            if (orderby === vm.orderby) {
+                vm.reverse = !vm.reverse;
+            }
+            vm.orderby = orderby;
+        };
+
         vm.DisplayModeEnum = {
             Card: 0,
             List: 1
