@@ -25,12 +25,12 @@
                     <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
                         <thead>
                             <tr>
-                                <th data-ng-click="vm.setOrder('product')">Product</th>
-                                <th data-ng-click="vm.alert()">PaymentType</th>
-                                <th data-ng-click="vm.setOrder()">Completition Date</th>
+                                <th data-ng-click="vm.setOrder('orderId')">Product</th>
+                                <th data-ng-click="vm.setOrder('paymentType')">PaymentType</th>
+                                <th data-ng-click="vm.setOrder('date')">Completition Date</th>
                             </tr>
                         </thead>
-                        <tbody data-ng-repeat="paym in vm.filteredPayments ">
+                        <tbody data-ng-repeat="paym in vm.filteredPayments | orderBy:vm.orderby:vm.reverse ">
                             <tr>
                                 <td>
                                     {{paym.order.id}}

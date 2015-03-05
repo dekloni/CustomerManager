@@ -139,6 +139,7 @@
     <Content Include="app\customersApp\directives\wcUnique.js" />
     <Content Include="app\customersApp\filters\nameCityStateFilter.js" />
     <Content Include="app\customersApp\filters\nameProductFilter.js" />
+    <Content Include="app\customersApp\filters\paymentTypeFilter.js" />
     <Content Include="app\customersApp\partials\modal.html" />
     <Content Include="app\customersApp\services\authService.js" />
     <Content Include="app\customersApp\services\httpInterceptors.js" />

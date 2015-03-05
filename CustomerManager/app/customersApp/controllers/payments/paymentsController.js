@@ -64,11 +64,11 @@ define(['app'], function (app) {
         };
 
         vm.setOrder = function (orderby) {
-            alert('asdasd');
-            //if (orderby === vm.orderby) {
-            //    vm.reverse = !vm.reverse;
-            //}
-            //vm.orderby = orderby;
+            //alert('asdasd');
+            if (orderby === vm.orderby) {
+                vm.reverse = !vm.reverse;
+            }
+            vm.orderby = orderby;
         };
 
         vm.alert = function () {
@@ -139,7 +139,7 @@ define(['app'], function (app) {
         }
 
         function filterCustomers(filterText) {
-            vm.filteredPayments = vm.payments;// $filter("nameCityStateFilter")(vm.customers, filterText);
+            vm.filteredPayments = $filter("paymentTypeFilter")(vm.payments, filterText);
             vm.filteredCount = vm.filteredPayments.length;
         }
 
