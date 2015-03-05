@@ -18,7 +18,7 @@ namespace CustomerManager.Model
         public Customer Customer { get; set; }
 
         //public int PaymentId { get; set; }
-        public ICollection<Payment> Payment { get; set; }
+        public ICollection<Payment> Payments { get; set; }
 
         public Order Clone()
         {

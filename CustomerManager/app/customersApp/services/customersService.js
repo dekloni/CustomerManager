@@ -67,6 +67,14 @@ define(['app'], function (app) {
             });
         };
 
+        factory.getOrder = function (id) {
+            return $http.get(serviceBase + 'orderById/' + id).then(function(results){
+
+                return results.data;
+            });
+        }
+
+
         function extendCustomers(customers) {
             var custsLen = customers.length;
             //Iterate through customers

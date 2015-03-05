@@ -134,6 +134,7 @@
     <Content Include="app\customersApp\controllers\customers\customersController.js" />
     <Content Include="app\customersApp\controllers\navbarController.js" />
     <Content Include="app\customersApp\controllers\orders\orderChildController.js" />
+    <Content Include="app\customersApp\controllers\orders\orderPaymentsController.js" />
     <Content Include="app\customersApp\controllers\orders\ordersController.js" />
     <Content Include="app\customersApp\controllers\payments\paymentsController.js" />
     <Content Include="app\customersApp\directives\wcUnique.js" />
@@ -156,6 +157,7 @@
     <Content Include="app\customersApp\services\customersBreezeService.js" />
     <Content Include="app\customersApp\services\customersService.js" />
     <Content Include="app\customersApp\services\dataService.js" />
+    <Content Include="app\customersApp\views\orders\orderPayments.html" />
     <Content Include="app\customersApp\views\payments\payments.html" />
     <Content Include="app\customersApp\views\payments\paymentTable.html" />
     <Content Include="app\wc.directives\directives\menuHighlighter.js" />

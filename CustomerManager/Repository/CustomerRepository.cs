@@ -6,9 +6,10 @@ using System.Web;
 
 namespace CustomerManager.Repository
 {
-    public class CustomerRepository
+    public class CustomerRepository : IDisposable
     {
         CustomerManagerContext _Context;
+        private bool disposed;
 
         public CustomerRepository()
         {
@@ -54,7 +55,7 @@ namespace CustomerManager.Repository
         {
             var query = _Context.Payments
                        .Include("Order")
-                       //.Include("State")
+                //.Include("State")
                        .OrderBy(c => c.Date);
             return query.AsQueryable();
         }
@@ -76,6 +77,7 @@ namespace CustomerManager.Repository
             return _Context.Customers
                     .Include("Orders")
                     .Include("State")
+                    .Include("Orders.Payments")
                     .SingleOrDefault(c => c.Id == id);
         }
 
@@ -138,6 +140,19 @@ namespace CustomerManager.Repository
             return opStatus;
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+        }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            this._Context.Dispose();
+
+            disposed = true;
+        }
     }
 }

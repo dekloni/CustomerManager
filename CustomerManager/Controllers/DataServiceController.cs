@@ -10,9 +10,10 @@ using System.Web.Http;
 
 namespace CustomerManager.Controllers
 {
-    public class DataServiceController : ApiController
+    public class DataServiceController : ApiController, IDisposable
     {
         CustomerRepository _Repository;
+        private bool disposed;
 
         public DataServiceController()
         {
@@ -123,6 +124,21 @@ namespace CustomerManager.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, opStatus.ExceptionMessage);
             }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            _Repository.Dispose();
+
+            disposed = true;
         }
     }
 }

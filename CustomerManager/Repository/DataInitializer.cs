@@ -55,7 +55,7 @@ namespace CustomerManager.Repository
                     custOrder.Quantity = (quantity == 0) ? 1 : quantity;
                     custOrder.Date = DateTime.Now.AddDays(randomQuantity.Next(30) * multiplier);
                     custOrder.CustomerId = cust.Id;
-                    custOrder.Payment = new List<Payment>();
+                    custOrder.Payments = new List<Payment>();
 
                     // generate order payments
                     var randomNumberOfPayments = randomQuantity.Next(2);
@@ -63,7 +63,7 @@ namespace CustomerManager.Repository
                     for (int l = 0; l < randomNumberOfPayments; l++)
                     {
                         var pm = new Payment() { Date = DateTime.Now.AddDays(randomQuantity.Next(30) * multiplier), PaymentType = paymentType[paymentTypeIndex] };
-                        custOrder.Payment.Add(pm);
+                        custOrder.Payments.Add(pm);
                     }
 
                     //if (custOrder.Id==2)

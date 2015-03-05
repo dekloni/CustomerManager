@@ -36,6 +36,7 @@ define(['customersApp/services/routeResolver'], function () {
                 .when('/customers', route.resolve('Customers', 'customers/', 'vm'))
                 .when('/customerorders/:customerId', route.resolve('CustomerOrders', 'customers/', 'vm'))
                 .when('/customeredit/:customerId', route.resolve('CustomerEdit', 'customers/', 'vm', true))
+                .when('/orderpayments/:orderid', route.resolve('OrderPayments', 'orders/', 'vm'))
                 .when('/payments', route.resolve('Payments', 'payments/', 'vm'))
                 .when('/orders', route.resolve('Orders', 'orders/', 'vm'))
                 .when('/about', route.resolve('About', '', 'vm'))
