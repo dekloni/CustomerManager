@@ -86,6 +86,14 @@ namespace CustomerManager.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, customer);
         }
 
+        [HttpGet]
+        public HttpResponseMessage OrderById(int id)
+        {
+            var order = _Repository.GetOrderById(id);
+            return Request.CreateResponse(HttpStatusCode.OK, order);
+
+        }
+
         // POST api/<controller>
         public HttpResponseMessage PostCustomer([FromBody]Customer customer)
         {

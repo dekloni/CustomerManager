@@ -1,18 +1,54 @@
 ﻿<div class="orders view">
     <div class="container">
         <header>
-            <h3><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;All payments for customer XXXX</h3>
+            <h3><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;All payments for order {{ vm.order.id}} by customer {{ vm.order.customer.firstName }} {{ vm.order.customer.lastName }} </h3>
         </header>
         <br />
         <div class="customerEdit">
-            <h2>Hello , das ist order payments</h2>
-            <p>
-                <div>
-                    <!--{{ vm.errorMessage }}-->
+            <!--<h2>Hello , das ist order payments</h2>-->
+
+            <div class="row">
+                <div class="col-md-2">
+                    Product:
                 </div>
-            </p>
+                <div class="col-md-2">
+                    <strong> <span>{{vm.order.product}}</span></strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Price:
+                </div>
+                <div class="col-md-2">
+                    <strong> <span>{{vm.order.price | currency}}</span></strong>
+                </div>
+            </div>
+
+            <br />
+            <h4>Payments</h4>
+
+
+            <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+                <thead>
+                    <tr>
+                        <th data-ng-click="vm.setOrder('product')">Date</th>
+                        <th data-ng-click="vm.setOrder('date')">Payment Type</th>
+                        <!--<th data-ng-click="vm.setOrder('quantity')">Quantity</th>
+                        <th data-ng-click="vm.setOrder('price')">Unit Price</th>
+                        <th>Payments</th>
+                        <th data-ng-click="vm.setOrder('orderTotal')">Total</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="paym in vm.order.payments">
+                        <td>{{paym.date | date : "dd/MM/yyyy HH:mm"}}</td>
+                        <td>{{paym.paymentType}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <!--<div class="statusRow">
-                <br />-->
+            <br />-->
             <div class="text-danger" data-ng-show="vm.errorMessage">
                 <span class="glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;Error: {{ vm.errorMessage }}
             </div>

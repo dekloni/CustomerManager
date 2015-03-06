@@ -81,6 +81,14 @@ namespace CustomerManager.Repository
                     .SingleOrDefault(c => c.Id == id);
         }
 
+        internal Order GetOrderById(int id)
+        {
+            return _Context.Orders
+                   .Include("Customer")
+                   .Include("Payments")
+                   .SingleOrDefault(c => c.Id == id);
+        }
+
         public OperationStatus InsertCustomer(Customer customer)
         {
             var opStatus = new OperationStatus { Status = true };
@@ -114,6 +122,7 @@ namespace CustomerManager.Repository
             }
             return opStatus;
         }
+
 
         public OperationStatus DeleteCustomer(int id)
         {
@@ -154,5 +163,6 @@ namespace CustomerManager.Repository
 
             disposed = true;
         }
+
     }
 }
