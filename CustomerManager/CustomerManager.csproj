@@ -186,6 +186,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\tweenMax.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.12.1.js" />
     <Content Include="server\accessDB.js" />
     <Content Include="server\initMongoData.js" />
     <Content Include="server\lib\protectJSON.js" />

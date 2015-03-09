@@ -9,7 +9,8 @@
                 <span class="glyphicon glyphicon-edit"></span> {{vm.title}} Payment
             </h3>
         </header>
-
+        <pre>Selected date is: <em>{{vm.payment.date | date:'fullDate' }}</em></pre>
+        
         <div class="text-danger" data-ng-show="vm.errorMessage">
             <span class="glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;Error: {{ vm.errorMessage }}
         </div>
@@ -37,9 +38,10 @@
                 <div class="row">
                     <div class="col-md-2">
                         Date
+
                     </div>
                     <div class="col-md-10">
-                        <input type="text" name="date" class="form-control" data-ng-model="vm.payment.date" required/>
+                        <input type="text" name="date" class="form-control" data-ng-model="vm.payment.date" datepicker-popup="{{format}}" required />
                         <span class="errorMessage" ng-show="editForm.paymentType.$touched && editForm.date.$invalid">
                             Date is required
                         </span>
