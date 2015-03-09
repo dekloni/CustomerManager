@@ -8,12 +8,43 @@ define(['app'], function (app) {
         var serviceBase = '/api/dataservice/',
             factory = {};
 
-        factory.getCustomers = function (pageIndex, pageSize) {
-            return getPagedResource('customers', pageIndex, pageSize);
-        };
 
         factory.getPaymentsSummary = function (pageIndex, pageSize) {
             return getPagedResource('payments', pageIndex, pageSize);
+        };
+
+        factory.getPayment = function (id) {
+            //then does not unwrap data so must go through .data property
+            //success unwraps data automatically (no need to call .data property)
+            return $http.get(serviceBase + 'paymentById/' + id).then(function (results) {
+                //extendCustomers([results.data]);
+                return results.data;
+            });
+        };
+
+        factory.insertPayment = function (customer) {
+            return $http.post(serviceBase + 'postPayment', customer).then(function (results) {
+                customer.id = results.data.id;
+                return results.data;
+            });
+        };
+
+        //factory.newCustomer = function () {
+        //    return $q.when({ id: 0 });
+        //};
+
+        factory.updatePayment = function (customer) {
+            return $http.put(serviceBase + 'putPayment/' + customer.id, customer).then(function (status) {
+                return status.data;
+            });
+        };
+
+
+
+
+
+        factory.getCustomers = function (pageIndex, pageSize) {
+            return getPagedResource('customers', pageIndex, pageSize);
         };
 
         factory.getCustomersSummary = function (pageIndex, pageSize) {

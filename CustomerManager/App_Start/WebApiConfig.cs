@@ -1,11 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Controllers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace CustomerManager.App_Start
 {

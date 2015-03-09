@@ -165,5 +165,47 @@ namespace CustomerManager.Repository
             disposed = true;
         }
 
+        public OperationStatus InsertPayment(Payment customer)
+        {
+            var opStatus = new OperationStatus { Status = true };
+            try
+            {
+                _Context.Payments.Add(customer);
+                _Context.SaveChanges();
+            }
+            catch (Exception exp)
+            {
+                opStatus.Status = false;
+                opStatus.ExceptionMessage = exp.Message;
+                if (exp.InnerException != null)
+                {
+                    opStatus.ExceptionMessage += exp.InnerException.Message;
+                    if (exp.InnerException.InnerException != null)
+                    {
+                        opStatus.ExceptionMessage += exp.InnerException.InnerException.Message;
+                    }
+                }
+            }
+            return opStatus;
+        }
+
+        public OperationStatus UpdatePayment(Payment customer)
+        {
+            var opStatus = new OperationStatus { Status = true };
+            try
+            {
+                //customer.State.Id = customer.StateId;
+                customer.Order.Id = customer.Id;
+                _Context.Payments.Attach(customer);
+                _Context.Entry<Payment>(customer).State = System.Data.Entity.EntityState.Modified;
+                _Context.SaveChanges();
+            }
+            catch (Exception exp)
+            {
+                opStatus.Status = false;
+                opStatus.ExceptionMessage = exp.Message;
+            }
+            return opStatus;
+        }
     }
 }

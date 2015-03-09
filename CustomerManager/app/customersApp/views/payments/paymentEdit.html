@@ -5,7 +5,90 @@
 <div class="view">
     <div class="container">
         <header>
-            <h3><span class="glyphicon glyphicon-edit"></span> {{vm.title}} Payment</h3>
+            <h3>
+                <span class="glyphicon glyphicon-edit"></span> {{vm.title}} Payment
+            </h3>
         </header>
+
+        <div class="text-danger" data-ng-show="vm.errorMessage">
+            <span class="glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;Error: {{ vm.errorMessage }}
+        </div>
+
+        <form name="editForm" novalidate>
+            <div class="customerEdit">
+                <!--<div class="row">
+                    <div class="col-md-12">
+                        <h4>{{ vm.customer.firstName + ' ' + vm.customer.lastName }} <span data-ng-hide="vm.customer.id == 0">(<a style="font-size: 12pt" href="#/customerorders/{{vm.customer.id}}">View Orders</a>)</span></h4>
+                        <br/>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <div class="col-md-2">
+                        Payment Type
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="paymentType" class="form-control" data-ng-model="vm.payment.paymentType" required/>
+                        <span class="errorMessage" ng-show="editForm.paymentType.$touched && editForm.paymentType.$invalid">
+                            Payment Type is required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        Date
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="date" class="form-control" data-ng-model="vm.payment.date" required/>
+                        <span class="errorMessage" ng-show="editForm.paymentType.$touched && editForm.date.$invalid">
+                            Date is required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        Order
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="order" class="form-control" data-ng-model="vm.payment.orderId" required/>
+                        <span class="errorMessage" ng-show="editForm.order.$touched && editForm.order.$invalid">
+                            Order id required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" data-ng-click="vm.savePayment()"
+                                ng-disabled="editForm.$invalid || !editForm.$dirty">
+                            {{vm.buttonText}}
+                        </button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-danger" data-ng-if="vm.customer.id > 0" data-ng-click="vm.deleteCustomer()">Delete</button>
+                    </div>
+                </div>
+
+                <div class="statusRow">
+                    <br/>
+                    <!--{{vm.updateStatus}}-->
+                    <div class="label label-success" data-ng-show="vm.updateStatus">
+                        <span class="glyphicon glyphicon-thumbs-up icon-white"></span>&nbsp;&nbsp;Customer updated!
+                    </div>
+                </div>
+                <div class="statusRow">
+                    <br />
+                    <div class="label label-important" >
+                        <span class="glyphicon glyphicon-thumbs-down icon-white" data-ng-show="vm.errorMessage"></span>&nbsp;&nbsp;Error: {{ vm.errorMessage }}
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+
+
+
     </div>
 </div>
+

@@ -86,6 +86,42 @@ namespace CustomerManager.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, customer);
         }
 
+
+        [HttpGet]
+        public HttpResponseMessage PaymentById(int id)
+        {
+            var pmnt = _Repository.GetPayments().FirstOrDefault(p => p.Id == id);
+            return Request.CreateResponse(HttpStatusCode.OK, pmnt);
+        }
+
+
+        // POST api/<controller>
+        public HttpResponseMessage PostPayment([FromBody]Payment customer)
+        {
+            var opStatus = _Repository.InsertPayment(customer);
+            if (opStatus.Status)
+            {
+                var response = Request.CreateResponse<Payment>(HttpStatusCode.Created, customer);
+                string uri = Url.Link("DefaultApi", new { id = customer.Id });
+                response.Headers.Location = new Uri(uri);
+                return response;
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, opStatus.ExceptionMessage);
+        }
+
+
+        // PUT api/<controller>/5
+        public HttpResponseMessage PutPayment(int id, [FromBody]Payment customer)
+        {
+            var opStatus = _Repository.UpdatePayment(customer);
+            if (opStatus.Status)
+            {
+                return Request.CreateResponse<Payment>(HttpStatusCode.Accepted, customer);
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotModified, opStatus.ExceptionMessage);
+        }
+
+
         [HttpGet]
         public HttpResponseMessage OrderById(int id)
         {
