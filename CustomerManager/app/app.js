@@ -38,6 +38,7 @@ define(['customersApp/services/routeResolver'], function () {
                 .when('/customeredit/:customerId', route.resolve('CustomerEdit', 'customers/', 'vm', true))
                 .when('/orderpayments/:orderid', route.resolve('OrderPayments', 'orders/', 'vm'))
                 .when('/payments', route.resolve('Payments', 'payments/', 'vm'))
+                .when('/paymentedit/:paymentId', route.resolve('PaymentEdit', 'payments/', 'vm', false))
                 .when('/orders', route.resolve('Orders', 'orders/', 'vm'))
                 .when('/about', route.resolve('About', '', 'vm'))
                 .when('/login/:redirect*?', route.resolve('Login', '', 'vm'))

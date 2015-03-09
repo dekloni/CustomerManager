@@ -5,6 +5,14 @@
         </header>
 
         <br />
+
+        <div>
+            <a data-ng-click="vm.navigate('/paymentedit/0')">
+                <span class="glyphicon glyphicon-plus"></span> Add Customer
+            </a>
+        </div>
+        <br />
+
         <div class="customerEdit">
             <form class="form-horizontal" role="form">
                 <div class="form-group">
@@ -67,7 +75,6 @@
         </div>
     </div>
 
-    <h5>Showing {{ vm.filteredCount }} of {{ vm.totalRecords}} total customer.s</h5>
 
 </div>
 </div>
