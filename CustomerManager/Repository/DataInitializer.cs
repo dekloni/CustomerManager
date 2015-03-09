@@ -58,7 +58,7 @@ namespace CustomerManager.Repository
                     custOrder.Payments = new List<Payment>();
 
                     // generate order payments
-                    var randomNumberOfPayments = randomQuantity.Next(2);
+                    var randomNumberOfPayments = randomQuantity.Next(3);
                     var paymentTypeIndex = randomQuantity.Next(paymentType.Length);
                     for (int l = 0; l < randomNumberOfPayments; l++)
                     {

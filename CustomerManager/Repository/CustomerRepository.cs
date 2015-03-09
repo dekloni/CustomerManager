@@ -22,6 +22,7 @@ namespace CustomerManager.Repository
             var query = _Context.Customers
                         .Include("Orders")
                         .Include("State")
+                    .Include("Orders.Payments")
                         .OrderBy(c => c.LastName);
             return query.AsQueryable();
         }
