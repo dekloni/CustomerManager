@@ -135,6 +135,7 @@
     <Content Include="app\customersApp\controllers\orders\ordersController.js" />
     <Content Include="app\customersApp\controllers\payments\paymentEditController.js" />
     <Content Include="app\customersApp\controllers\payments\paymentsController.js" />
+    <Content Include="app\customersApp\controllers\testController.js" />
     <Content Include="app\customersApp\directives\wcUnique.js" />
     <Content Include="app\customersApp\filters\nameCityStateFilter.js" />
     <Content Include="app\customersApp\filters\nameProductFilter.js" />
@@ -159,6 +160,7 @@
     <Content Include="app\customersApp\views\payments\paymentEdit.html" />
     <Content Include="app\customersApp\views\payments\payments.html" />
     <Content Include="app\customersApp\views\payments\paymentTable.html" />
+    <Content Include="app\customersApp\views\test.html" />
     <Content Include="app\wc.directives\directives\menuHighlighter.js" />
     <Content Include="app\wc.directives\directives\wcOverlay.js" />
     <Content Include="Content\animations.css" />

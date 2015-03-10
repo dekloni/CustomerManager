@@ -3,7 +3,9 @@
 define(['customersApp/services/routeResolver'], function () {
 
     var app = angular.module('customersApp', ['ngRoute', 'ngAnimate', 'routeResolverServices',
-                                              'wc.directives', 'wc.animations', 'ui.bootstrap', 'breeze.angular']);
+                                              'wc.directives', 'wc.animations', 'ui.bootstrap', 'breeze.angular' ]);
+
+    //angular.module('myModule', ['ui.bootstrap']);
 
     app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider',
                 '$compileProvider', '$filterProvider', '$provide', '$httpProvider',
@@ -41,6 +43,7 @@ define(['customersApp/services/routeResolver'], function () {
                 .when('/paymentedit/:paymentId', route.resolve('PaymentEdit', 'payments/', 'vm', false))
                 .when('/orders', route.resolve('Orders', 'orders/', 'vm'))
                 .when('/about', route.resolve('About', '', 'vm'))
+                .when('/test', route.resolve('Test', '', 'vm'))
                 .when('/login/:redirect*?', route.resolve('Login', '', 'vm'))
                 .otherwise({ redirectTo: '/customers' });
 
