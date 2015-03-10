@@ -1,7 +1,7 @@
 // Module dependencies
 var mongoose = require('mongoose')
   , Schema = mongoose.Schema
-  , Customer = require('./models/customer')
+  , Customer = require('./models/payment')
   , State = require('./models/state')
   , util = require('util');
 
@@ -43,7 +43,7 @@ module.exports = {
         });
     },
 
-    // get the customer summary
+    // get the payment summary
     getCustomersSummary: function (skip, top, callback) {
         console.log('*** accessDB.getCustomersSummary');
         var count = 0;
@@ -61,7 +61,7 @@ module.exports = {
       });
     },
 
-    // get a  customer
+    // get a  payment
     getCustomer: function (id, callback) {
         console.log('*** accessDB.getCustomer');
         Customer.find({ 'id': id }, {}, function (err, customer) {
@@ -69,7 +69,7 @@ module.exports = {
         });
     },
 
-    // insert a  customer
+    // insert a  payment
     insertCustomer: function (req_body, state, callback) {
         console.log('*** accessDB.insertCustomer');
 
@@ -88,7 +88,7 @@ module.exports = {
         customer.id = 1; // The id is calculated by the Mongoose pre 'save'.
 
         customer.save(function (err, customer) {
-            if (err) { console.log('*** new customer save err: ' + err); return callback(err); }
+            if (err) { console.log('*** new payment save err: ' + err); return callback(err); }
 
             callback(null, customer.id);
         });
@@ -122,7 +122,7 @@ module.exports = {
         });
     },
 
-    // delete a customer
+    // delete a payment
     deleteCustomer: function (id, callback) {
         console.log('*** accessDB.deleteCustomer');
         Customer.remove({ 'id': id }, function (err, customer) {
@@ -130,7 +130,7 @@ module.exports = {
         });
     },
 
-    // get a  customer's email
+    // get a  payment's email
     checkUnique: function (id, property, value, callback) {
         console.log('*** accessDB.checkUnique');
         console.log(id + ' ' + value)

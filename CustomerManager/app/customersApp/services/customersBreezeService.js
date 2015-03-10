@@ -65,9 +65,9 @@ define(['app'], function (app) {
             }
             var customer = entityManager.getEntityByKey('Customer', id);
 
-            /*  When the customer is deleted the customerID is set to 0 for each order
+            /*  When the payment is deleted the customerID is set to 0 for each order
                 since no parent exists
-                Detach orders since the customer is being deleted and server
+                Detach orders since the payment is being deleted and server
                 is set to cascade deletes
             */
             if (customer) {

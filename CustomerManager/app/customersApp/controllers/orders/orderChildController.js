@@ -27,7 +27,7 @@ define(['app'], function (app) {
                 updateTotal($scope.customer);
             }
             else {
-                $scope.$on('customer', function (event, customer) {
+                $scope.$on('payment', function (event, customer) {
                     vm.customer = customer;
                     updateTotal(customer);
                 });

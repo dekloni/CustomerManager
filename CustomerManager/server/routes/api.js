@@ -22,16 +22,16 @@ exports.customers = function (req, res) {
 };
 
 exports.customer = function (req, res) {
-    console.log('*** customer');
+    console.log('*** payment');
 
     db.getCustomer(req.params.id, function (err, customer) {
         if (err) {
-            console.log('*** customer err');
+            console.log('*** payment err');
             res.json({
                 customer: customer
             });
         } else {
-            console.log('*** customer ok');
+            console.log('*** payment ok');
             res.json(customer);
         }
     });

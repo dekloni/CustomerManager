@@ -189,15 +189,15 @@ namespace CustomerManager.Repository
             return opStatus;
         }
 
-        public OperationStatus UpdatePayment(Payment customer)
+        public OperationStatus UpdatePayment(Payment payment)
         {
             var opStatus = new OperationStatus { Status = true };
             try
             {
-                //customer.State.Id = customer.StateId;
-                customer.Order.Id = customer.Id;
-                _Context.Payments.Attach(customer);
-                _Context.Entry<Payment>(customer).State = System.Data.Entity.EntityState.Modified;
+                //payment.State.Id = payment.StateId;
+                payment.Order.Id = payment.OrderId;
+                _Context.Payments.Attach(payment);
+                _Context.Entry<Payment>(payment).State = System.Data.Entity.EntityState.Modified;
                 _Context.SaveChanges();
             }
             catch (Exception exp)

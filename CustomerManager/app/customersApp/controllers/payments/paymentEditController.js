@@ -14,7 +14,7 @@ define(['app'], function (app) {
             timer,
             onRouteChangeOff;
 
-        //vm.customer = {};
+        //vm.payment = {};
         //vm.states = [];
         vm.title = (paymentid > 0) ? 'Edit' : 'Add';
         vm.buttonText = (paymentid > 0) ? 'Update' : 'Add';
@@ -24,7 +24,7 @@ define(['app'], function (app) {
         var init = function () {
 
             if (paymentid > 0) {
-                dataService.getPayment(paymentid).then(function(payment) {
+                dataService.getPayment(paymentid).then(function (payment) {
                     vm.payment = payment;
                 }, processError);
             }
@@ -34,8 +34,12 @@ define(['app'], function (app) {
         init();
 
 
-        function processError(error) {
-            vm.errorMessage = error.data.message;
+        function processError(error, status, headers, config) {
+            //if (error.code)
+            vm.errorMessage = error.status + " " + error.statusText;
+            if (error.data != null) {
+                vm.errorMessage += " " + error.data.message;
+            }
             startTimer();
         }
 
@@ -45,7 +49,7 @@ define(['app'], function (app) {
                 $timeout.cancel(timer);
                 vm.errorMessage = '';
                 vm.updateStatus = false;
-            },10000);
+            }, 10000);
         }
 
 

@@ -10,12 +10,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr data-ng-hide="vm.customer.orders || vm.customer.orders.length > 0" class="error">
+        <tr data-ng-hide="vm.payment.orders || vm.payment.orders.length > 0" class="error">
             <td colspan="6">
                 <div class="text-center"><strong>No orders found</strong></div>
             </td>
         </tr>
-        <tr data-ng-repeat="order in vm.customer.orders | orderBy:vm.orderby:vm.reverse" class="repeat-animation">
+        <tr data-ng-repeat="order in vm.payment.orders | orderBy:vm.orderby:vm.reverse" class="repeat-animation">
             <td>
                 {{ order.product }}
             </td>
@@ -40,7 +40,7 @@
                 &nbsp;
             </td>
             <td>
-                <strong>{{ vm.customer.ordersTotal | currency }}</strong>
+                <strong>{{ vm.payment.ordersTotal | currency }}</strong>
             </td>
         </tr>
     </tbody>

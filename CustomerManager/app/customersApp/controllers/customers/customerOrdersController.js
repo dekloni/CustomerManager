@@ -18,7 +18,7 @@ define(['app'], function (app) {
                 dataService.getCustomer(customerId)
                 .then(function (customer) {
                     vm.customer = customer;
-                    $scope.$broadcast('customer', customer);
+                    $scope.$broadcast('payment', customer);
                 }, function (error) {
                     $window.alert("Sorry, an error occurred: " + error.message);
                 });

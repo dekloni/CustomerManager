@@ -19,7 +19,7 @@
             <div class="customerEdit">
                 <!--<div class="row">
                     <div class="col-md-12">
-                        <h4>{{ vm.customer.firstName + ' ' + vm.customer.lastName }} <span data-ng-hide="vm.customer.id == 0">(<a style="font-size: 12pt" href="#/customerorders/{{vm.customer.id}}">View Orders</a>)</span></h4>
+                        <h4>{{ vm.payment.firstName + ' ' + vm.payment.lastName }} <span data-ng-hide="vm.customer.id == 0">(<a style="font-size: 12pt" href="#/paymentorders/{{vm.payment.id}}">View Orders</a>)</span></h4>
                         <br/>
                     </div>
                 </div>-->
@@ -28,7 +28,7 @@
                         Payment Type
                     </div>
                     <div class="col-md-10">
-                        <input type="text" name="paymentType" class="form-control" data-ng-model="vm.payment.paymentType" required/>
+                        <input type="datetime" name="paymentType" class="form-control" data-ng-model="vm.payment.paymentType" required/>
                         <span class="errorMessage" ng-show="editForm.paymentType.$touched && editForm.paymentType.$invalid">
                             Payment Type is required
                         </span>
@@ -41,10 +41,12 @@
 
                     </div>
                     <div class="col-md-10">
-                        <input type="text" name="date" class="form-control" data-ng-model="vm.payment.date" datepicker-popup="{{format}}" required />
+                        <input type="text" name="date" class="form-control" data-ng-model="vm.payment.date" datepicker-popup="dd-MMM-yyyy" required />
                         <span class="errorMessage" ng-show="editForm.paymentType.$touched && editForm.date.$invalid">
                             Date is required
                         </span>
+                        
+
                     </div>
                 </div>
 
@@ -67,7 +69,7 @@
                             {{vm.buttonText}}
                         </button>
                         &nbsp;&nbsp;
-                        <button class="btn btn-danger" data-ng-if="vm.customer.id > 0" data-ng-click="vm.deleteCustomer()">Delete</button>
+                        <button class="btn btn-danger" data-ng-if="vm.payment.id > 0" data-ng-click="vm.deleteCustomer()">Delete</button>
                     </div>
                 </div>
 

@@ -106,7 +106,7 @@ namespace CustomerManager.Controllers
                 response.Headers.Location = new Uri(uri);
                 return response;
             }
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, opStatus.ExceptionMessage);
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "kuku1");
         }
 
 
@@ -118,7 +118,7 @@ namespace CustomerManager.Controllers
             {
                 return Request.CreateResponse<Payment>(HttpStatusCode.Accepted, customer);
             }
-            return Request.CreateErrorResponse(HttpStatusCode.NotModified, opStatus.ExceptionMessage);
+            return Request.CreateErrorResponse(HttpStatusCode.NotModified, "kuku2");
         }
 
 

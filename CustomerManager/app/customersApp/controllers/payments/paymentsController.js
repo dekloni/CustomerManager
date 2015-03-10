@@ -43,7 +43,7 @@ define(['app'], function (app) {
                 closeButtonText: 'Cancel',
                 actionButtonText: 'Delete Customer',
                 headerText: 'Delete ' + custName + '?',
-                bodyText: 'Are you sure you want to delete this customer?'
+                bodyText: 'Are you sure you want to delete this payment?'
             };
 
             modalService.showModal({}, modalOptions).then(function (result) {
@@ -57,7 +57,7 @@ define(['app'], function (app) {
                         }
                         filterCustomers(vm.searchText);
                     }, function (error) {
-                        $window.alert('Error deleting customer: ' + error.message);
+                        $window.alert('Error deleting payment: ' + error.message);
                     });
                 }
             });

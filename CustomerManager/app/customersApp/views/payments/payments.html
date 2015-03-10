@@ -48,7 +48,7 @@
                                     {{paym.paymentType}}
                                 </td>
                                 <td>
-                                    {{paym.date | date:'MM/dd/yyyy @ h:mma'}} <!--<a href="#/customerorders/{{customer.id}}">{{ customer.firstName + ' ' + customer.lastName }}</a>-->
+                                    {{paym.date | date:'MM/dd/yyyy @ h:mma'}} <!--<a href="#/paymentorders/{{payment.id}}">{{ payment.firstName + ' ' + payment.lastName }}</a>-->
                                 </td>
                                 <td>
                                     <a href="#/paymentedit/{{paym.id}}">Edit</a>
@@ -62,7 +62,7 @@
         </div>
         <div class="row show-hide-animation" data-ng-show="vm.filteredPayments.length == 0">
             <div class="col-md-12">
-                <h4>No customers found</h4>
+                <h4>No payments found</h4>
             </div>
         </div>
         <div class="row show-hide-animation" data-ng-show="vm.payments.length > 0" style="margin-left:0px;">

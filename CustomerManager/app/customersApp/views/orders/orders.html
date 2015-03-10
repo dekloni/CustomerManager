@@ -18,19 +18,19 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12 repeat-animation" data-ng-repeat="customer in vm.filteredCustomers | orderBy:'lastName'">
+                <div class="col-md-12 repeat-animation" data-ng-repeat="payment in vm.filteredCustomers | orderBy:'lastName'">
                     <div>
-                        <h4><a href="#/customerorders/{{customer.id}}">{{ customer.firstName + ' ' + customer.lastName }}</a></h4>
+                        <h4><a href="#/paymentorders/{{payment.id}}">{{ payment.firstName + ' ' + payment.lastName }}</a></h4>
                     </div>
-                    <div data-ng-include="'/app/customersApp/views/orders/ordersTable.html'" data-ng-controller="OrderChildController as vm" />
+                    <div data-ng-include="'/app/paymentsApp/views/orders/ordersTable.html'" data-ng-controller="OrderChildController as vm" />
                 </div>
             </div>
             <div class="row show-hide-animation" data-ng-show="vm.filteredCustomers.length == 0">
                 <div class="col-md-12">
-                    <h4>No customers found</h4>
+                    <h4>No payments found</h4>
                 </div>
             </div>
-            <div class="row show-hide-animation" data-ng-show="vm.customers.length > 0" style="margin-left:0px;">
+            <div class="row show-hide-animation" data-ng-show="vm.payments.length > 0" style="margin-left:0px;">
                 <div class="col-md-12">
                     <div data-pagination
                          data-on-select-page="vm.pageChanged(page)"
@@ -39,7 +39,7 @@
                          data-boundary-links="true"
                          class="pagination-sm">
                     </div>
-                    <h5>Showing {{ vm.filteredCount }} of {{ vm.totalRecords}} total customers</h5>
+                    <h5>Showing {{ vm.filteredCount }} of {{ vm.totalRecords}} total payments</h5>
                 </div>
             </div>
         </div>

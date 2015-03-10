@@ -41,7 +41,7 @@ define(['app'], function (app) {
                 closeButtonText: 'Cancel',
                 actionButtonText: 'Delete Customer',
                 headerText: 'Delete ' + custName + '?',
-                bodyText: 'Are you sure you want to delete this customer?'
+                bodyText: 'Are you sure you want to delete this payment?'
             };
 
             modalService.showModal({}, modalOptions).then(function (result) {
